@@ -21,7 +21,26 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@utils/base": [
+        "src/app/utils/base/index.ts"
+      ],
+      "@utils/components": [
+        "src/app/utils/components/index.ts"
+      ],
+      "@utils/http": [
+        "src/app/utils/http/index.ts"
+      ],
+      "@utils/state": [
+        "src/app/utils/state/index.ts"
+      ],
+      "@utils/services": [
+        "src/app/utils/services/index.ts"
+      ],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
