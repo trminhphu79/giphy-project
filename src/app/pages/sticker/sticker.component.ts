@@ -42,4 +42,7 @@ export class StickerComponent extends BaseComponent implements OnInit {
     this.__stickerFacade.loadSticker({ limit: this.params.limit });
   }
 
+  override clearState() {
+    // this.__stickerFacade.clearState()
+  }
 }

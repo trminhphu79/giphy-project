@@ -17,12 +17,13 @@ export class HomeComponent extends BaseComponent implements OnInit {
   stickerList!: GIF[];
   stickerUpdating!: boolean;
   offset: number = 0;
-  limit: number = 4;
+
   constructor(
     private __homeFacade: HomeFacadeService,
     private __router: Router
   ) {
-    super()
+    super();
+    this.params.limit = 4;
   }
 
   ngOnInit(): void {
@@ -32,34 +33,30 @@ export class HomeComponent extends BaseComponent implements OnInit {
   override registerCoreLayer(): void {
     this.__homeFacade.getGifList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
-        console.log('value...', value)
         this.gifList = value;
       }
     });
 
     this.__homeFacade.getStickerList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
-        console.log('value...', value)
         this.stickerList = value;
       }
     });
 
     this.__homeFacade.isGifUpdating$().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
-        console.log('value...', value)
         this.gifUpdating = value;
       }
     });
 
     this.__homeFacade.isStickerUpdating$().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
-        console.log('value...', value)
         this.stickerUpdating = value;
       }
     });
 
-    this.__homeFacade.loadGifList({ limit: this.limit });
-    this.__homeFacade.loadStickeList({ limit: this.limit });
+    this.__homeFacade.loadGifList({ limit: this.params.limit });
+    this.__homeFacade.loadStickeList({ limit: this.params.limit });
   }
 
   favoriteChange(item: GIF) {
@@ -67,7 +64,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   onScrollingFinished() {
-    this.__homeFacade.loadGifList({ offset: this.offset, limit: this.limit })
+    this.__homeFacade.loadGifList({ offset: this.offset, limit: this.params.limit })
   }
 
   showAllSticker() {

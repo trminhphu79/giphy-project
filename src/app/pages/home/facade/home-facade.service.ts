@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HTTPParams } from '@utils/http';
 import { GifService } from "@utils/services";
 import { finalize, take } from "rxjs";
-import { StickerService } from "src/app/utils/services/stickers.service";
+import { StickerService } from "@utils/services";
 import { HomeStateSerivce } from "../core/home-state.service";
 
 @Injectable({ providedIn: 'root' })
@@ -65,7 +65,7 @@ export class HomeFacadeService {
     return this.__homeState.getSticker$();
   }
 
-  clearStates(){
+  clearStates() {
     this.__homeState.clearGifs();
     this.__homeState.clearStickers();
   }

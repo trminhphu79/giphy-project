@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HTTPParams } from "@utils/http";
-import { StickerService } from "src/app/utils/services/stickers.service";
+import { StickerService } from "@utils/services";
 import { StickerStateService } from "../core/sticker-state.service";
 import { take } from 'rxjs';
 import { finalize } from 'rxjs';
@@ -33,5 +33,9 @@ export class StickerFacadeService {
         throw err
       }
     })
+  }
+
+  clearState(){
+    this.__stickerState.clearState(); 
   }
 }

@@ -6,10 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layout';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SuggestTagsComponent } from './utils/components/suggest-tags/suggest-tags.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SuggestTagsComponent,
   ],
   imports: [
     BrowserModule,

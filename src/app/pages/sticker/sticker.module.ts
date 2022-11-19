@@ -7,8 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@shared';
-import { GirdModule } from 'src/app/utils/components/gird';
-import { SearchInputModule } from 'src/app/utils/components/search-input/search-input.module';
+import { GirdModule } from '@utils/components/grid';
+import { SearchInputModule } from '@utils/components/search-input';
+import { SuggestTagsModule } from '@utils/components/suggest-tags';
 
 
 
@@ -25,7 +26,8 @@ import { SearchInputModule } from 'src/app/utils/components/search-input/search-
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    SuggestTagsModule
   ]
 })
 export class StickerModule { }

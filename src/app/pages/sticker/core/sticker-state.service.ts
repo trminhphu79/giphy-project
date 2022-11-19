@@ -16,7 +16,7 @@ export class StickerStateService extends CoreStateService<StickerState> {
   isUpdating$() {
     return this.#updating$;
   }
-  
+
   getSticker$() {
     return this.#stickers$
   }
@@ -33,7 +33,12 @@ export class StickerStateService extends CoreStateService<StickerState> {
       ]
     })
   }
-  
+
+  clearState() {
+    this.setState({
+      stickers: []
+    })
+  }
 }
 
 interface StickerState {

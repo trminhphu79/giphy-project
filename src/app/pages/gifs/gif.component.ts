@@ -12,15 +12,15 @@ import { GifFacadeService } from './facade/gif-facade.service';
 })
 export class GifComponent extends BaseComponent implements OnInit {
 
-
   dataSource!: GIF[];
+  trendingKeyword!: string[]
   updating!: boolean;
   offset: number = 0;
   form!: FormGroup;
-  limit: number = 32;
 
   constructor(private __gifFacade: GifFacadeService, private _fb: FormBuilder) {
-    super()
+    super();
+    this.params.limit = 32;
   }
 
   ngOnInit(): void {
@@ -47,9 +47,20 @@ export class GifComponent extends BaseComponent implements OnInit {
       error: (err) => {
         throw err
       }
-    })
-    
-    this.__gifFacade.loadGifList({ limit: this.limit });
+    });
+
+    this.__gifFacade.getTrendingKeyword().pipe(takeUntil(this.destroy$)).subscribe({
+      next: (value) => {
+        this.trendingKeyword = value;
+        console.log(this.trendingKeyword)
+      },
+      error: (err) => {
+        throw err
+      }
+    });
+
+    this.__gifFacade.loadGifList({ limit: this.params.limit });
+    this.__gifFacade.loadTrendingKeyword();
   }
 
   #initForm() {
@@ -63,7 +74,8 @@ export class GifComponent extends BaseComponent implements OnInit {
   }
 
   onScrollingFinished() {
-    this.__gifFacade.loadGifList({ offset: this.offset, limit: this.limit })
+    this.params.limit = 12;
+    this.__gifFacade.loadGifList({ offset: this.offset, limit: this.params.limit })
   }
 
 }

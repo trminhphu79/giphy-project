@@ -34,6 +34,18 @@
       "@utils/components": [
         "src/app/utils/components/index.ts"
       ],
+      "@utils/components/search-input": [
+        "src/app/utils/components/search-input/index.ts"
+      ],
+      "@utils/components/suggest-tags": [
+        "src/app/utils/components/suggest-tags/index.ts"
+      ],
+      "@utils/components/grid": [
+        "src/app/utils/components/grid/index.ts"
+      ],
+      "@utils/components/confirm-dialog": [
+        "src/app/utils/components/confirm-dialog/index.ts"
+      ],
       "@utils/http": [
         "src/app/utils/http/index.ts"
       ],
