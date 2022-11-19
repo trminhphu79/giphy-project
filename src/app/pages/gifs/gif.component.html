@@ -1,0 +1,7 @@
+
+<form [formGroup]="form">
+  <app-search-input formControlName="searchControl"></app-search-input>
+</form>
+<div class="mt-4">
+  <app-grid [items]="dataSource" (favoriteChange)="favoriteChange($event)" [updating]="updating"  (scrollingFinished)="onScrollingFinished()"></app-grid>
+</div>

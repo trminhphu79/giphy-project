@@ -1,0 +1,25 @@
+<mat-toolbar class="px-4">
+  <div fxHide.gt-xs>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+      <ul fxLayout fxLayoutGap="30px" class="navigation-items" fxHide.xs>
+        <ng-container *ngFor="let item of menu">
+          <li (click)="goToPage(item)">
+              {{item.name}}
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div fxFlex="14" fxLayoutAlign="space-between center">
+      <button class="custom-btn" mat-button color="primary">
+        Upload
+        <mat-icon color="primary">upload</mat-icon>
+      </button>
+      <button class="custom-btn" mat-button color="warn">Login</button>
+    </div>
+  </div>
+</mat-toolbar>

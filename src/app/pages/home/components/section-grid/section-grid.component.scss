@@ -1,0 +1,31 @@
+@import '../../../../../styles/base/variables';
+
+.header-grid {
+  .right-header {
+    cursor: pointer;
+
+    &:hover {
+      mat-icon,
+      span {
+        color: $primary;
+      }
+    }
+
+    span {
+      font-size: $fs-16;
+      color: $black-primary;
+      font-weight: $font-bold;
+    }
+
+    mat-icon {
+      font-size: $fs-16;
+      font-weight: $font-bold;
+    }
+  }
+
+  .title {
+    font-size: $fs-16;
+    font-weight: $font-bold;
+    color: $black-primary;
+  }
+}

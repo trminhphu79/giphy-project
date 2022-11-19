@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, HostBinding } from '@angular/core';
+import { Component, Input, ViewEncapsulation, HostBinding, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'content-loader',
@@ -7,28 +7,12 @@ import { Component, Input, ViewEncapsulation, HostBinding } from '@angular/core'
     encapsulation: ViewEncapsulation.None
 })
 export class ContentLoaderComponent {
-    @Input() width = '80%';
-    @Input() height = '14px';
-    @Input() shape: 'circle' | 'square' | 'rect' = 'rect';
-    @Input() borderRadius = '4px';
-    @Input() direction: 'ltr' | 'rtl' = 'ltr';
 
-    get contentLoaderHeight(): string {
-        switch (this.shape) {
-            case 'circle':
-                return this.width;
-            case 'square':
-                return this.width;
-            case 'rect':
-                return this.height;
-            default:
-                return this.height;
-        };
+    @Input() countLoading: number = 10;
+
+    itemsLoading: any[] = new Array(this.countLoading)
+
+    ngOnChanges(changes: SimpleChanges) {
+        this.itemsLoading = new Array(this.countLoading)
     }
-
-    get contentLoaderBorderRadius(): string {
-        return this.shape === 'circle' ? '50%' : this.borderRadius;
-    }
-
-    @HostBinding('class') class = 'content-loader';
 }

@@ -1,0 +1,7 @@
+<div class="search-input-container">
+  <mat-icon>search</mat-icon>
+  <input class="custom-control" [type]="type" [placeholder]="placeholder" [value]="value" [disabled]="disabled"
+    (focus)="markOnTouched()" (blur)="markOnTouched()" (keyup)="valueChanges($event)"
+    (change)="$event.stopPropagation()" />
+  <mat-icon (click)="clear()" *ngIf="value">clear</mat-icon>
+</div>

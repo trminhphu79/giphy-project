@@ -1,3 +1,27 @@
-<div class="content-loader-shape"
-    [ngStyle]="{width: width, height: contentLoaderHeight, borderRadius: contentLoaderBorderRadius}"
-    [ngClass]="{ rtl: direction === 'rtl' }"></div>
+<div class="gird-custom content-loader">
+    <div class="gird-custom-item mb-2" *ngFor="let item of itemsLoading">
+        <ngx-skeleton-loader appearance="circle" [theme]="{ width: '304.5px', height: '240px',
+          'border-radius': '8px'
+        }">
+        </ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{
+                width: '304.5px',
+                'border-radius': '0',
+                height: '16px',
+                'margin':'5px 5px 10px 5px'
+              }"></ngx-skeleton-loader>
+
+        <ngx-skeleton-loader [theme]="{
+              width: '304.5px',
+              'border-radius': '0',
+              height: '16px',
+              'margin':'5px 5px 10px 5px'
+            }"></ngx-skeleton-loader>
+        <ngx-skeleton-loader [theme]="{
+              width: '304.5px',
+              'border-radius': '0',
+              height: '16px',
+              'margin':'5px 5px 10px 5px'
+            }"></ngx-skeleton-loader>
+    </div>
+</div>

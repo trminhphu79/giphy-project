@@ -4,9 +4,14 @@ import { Subject } from "rxjs";
 @Component({ template: "" })
 export class BaseComponent implements OnDestroy {
     destroy$ = new Subject<void>();
-
+    params: { limit: number, offset: number } = {
+        limit: 10,
+        offset: 0
+    }
     constructor() { }
-    
+
+    registerCoreLayer() { }
+
     trackByFn(index: number) {
         return index;
     }

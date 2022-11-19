@@ -1,0 +1,18 @@
+<div class="list mt-4">
+  <div class="header-grid" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="left-header" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5px">
+      <span class="title">{{title}}
+      </span>
+      <mat-icon fxLayout="row" fxLayoutAlign="space-between center">{{leftIcon}}</mat-icon>
+    </div>
+
+    <div class="right-header" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+      <span (click)="showAll.emit()">All {{title}}
+      </span>
+      <mat-icon fxLayout="row" fxLayoutAlign="space-between center">{{rightIcon}}</mat-icon>
+    </div>
+  </div>
+  <div class="content-grid mt-2">
+    <app-grid [items]="dataSource" [updating]="updating"></app-grid>
+  </div>
+</div>

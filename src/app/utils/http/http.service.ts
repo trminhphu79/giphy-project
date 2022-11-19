@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { THTTPParams, THTTPResponseItems, THTTPResponseItem } from './http.model';
+import { HTTPParams, HTTPResponseItems, HTTPResponseItem } from './http.model';
+import { GLOBAL_SETTINGS } from '@global-settings';
 
 @Injectable({
     providedIn: 'root'
@@ -8,41 +9,37 @@ import { THTTPParams, THTTPResponseItems, THTTPResponseItem } from './http.model
 export class HttpService {
     constructor(private __http: HttpClient) { }
 
-    protected getItems<T>(url: string, options?: THTTPParams) {
+    protected getItems<T>(url: string, options?: HTTPParams) {
+        let params: HTTPParams = {}
+        params['api_key'] = GLOBAL_SETTINGS.apiKey;
+        console.log('params...',params)
         if (options) {
-            let params: THTTPParams = {};
-            if (options.$count) {
-                params['$count'] = options.$count;
+            if (options.limit) {
+                params['limit'] = options.limit;
             };
-            if (options.$expand) {
-                params['$expand'] = options.$expand;
+            if (options.rating) {
+                params['rating'] = options.rating;
             };
-            if (options.$filter) {
-                params['$filter'] = options.$filter;
+            if (options.lang) {
+                params['lang'] = options.lang;
             };
-            if (options.$orderby) {
-                params['$orderby'] = options.$orderby;
+            if (options.offset) {
+                params['offset'] = options.offset;
             };
-            if (options.$select) {
-                params['$select'] = options.$select;
+            if (options.q) {
+                params['q'] = options.q;
             };
-            if (typeof (options.$skip) === 'number' && options.$skip >= 0) {
-                params['$skip'] = options.$skip;
-            };
-            if (typeof (options.$top) === 'number' && options.$top >= 0) {
-                params['$top'] = options.$top;
-            };
-            return this.__http.get<THTTPResponseItems<T>>(url, { params: params });
+            return this.__http.get<HTTPResponseItems<T>>(url, { params: params })
         } else {
-            return this.__http.get<THTTPResponseItems<T>>(url);
+            return this.__http.get<HTTPResponseItems<T>>(url);
         };
     }
 
-    protected getItem<T>(url: string, options?: Omit<THTTPParams, '$skip' | '$top' | '$filter' | '$count' | '$orderby'>) {
+    protected getItem<T>(url: string, options?: Omit<HTTPParams, '$skip' | '$top' | '$filter' | '$count' | '$orderby'>) {
         if (options) {
-            return this.__http.get<THTTPResponseItem<T>>(url, { params: options });
+            return this.__http.get<HTTPResponseItem<T>>(url, { params: options });
         } else {
-            return this.__http.get<THTTPResponseItem<T>>(url);
+            return this.__http.get<HTTPResponseItem<T>>(url);
         };
     }
 

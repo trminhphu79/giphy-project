@@ -25,6 +25,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
+      "@global-settings": [
+        "src/app/global-settings.ts"
+      ],
       "@utils/base": [
         "src/app/utils/base/index.ts"
       ],
@@ -40,12 +43,18 @@
       "@utils/services": [
         "src/app/utils/services/index.ts"
       ],
+      "@utils/models":[
+        "src/app/utils/models/index.ts"
+      ],
+      "@shared":[
+        "src/app/shared/index.ts"
+      ],
     }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }
