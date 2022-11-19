@@ -42,7 +42,7 @@ export class GifComponent extends BaseComponent implements OnInit {
 
     this.__gifFacade.getGifList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
-        this.dataSource = value
+        this.dataSource = value;
       },
       error: (err) => {
         throw err
@@ -78,4 +78,8 @@ export class GifComponent extends BaseComponent implements OnInit {
     this.__gifFacade.loadGifList({ offset: this.offset, limit: this.params.limit })
   }
 
+  suggestTagChange(event: string) {
+    this.dataSource = [];
+    this.__gifFacade.loadGifByTrendingKeyword({ limit: this.params.limit, q: event });
+  }
 }

@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '@shared';
-
-import { GirdModule } from 'src/app/utils/components/gird';
+import { GirdBaseModule } from '@utils/components/grid';
 import { SearchInputModule } from 'src/app/utils/components/search-input/search-input.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +20,7 @@ import { SectionGridComponent } from './components/section-grid/section-grid.com
   CommonModule,
     HomeRoutingModule,
     SharedModule,
-    GirdModule,
+    GirdBaseModule,
     SearchInputModule,
     ReactiveFormsModule,
     FlexLayoutModule,

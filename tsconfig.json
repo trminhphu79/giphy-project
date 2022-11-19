@@ -31,9 +31,6 @@
       "@utils/base": [
         "src/app/utils/base/index.ts"
       ],
-      "@utils/components": [
-        "src/app/utils/components/index.ts"
-      ],
       "@utils/components/search-input": [
         "src/app/utils/components/search-input/index.ts"
       ],

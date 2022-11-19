@@ -22,4 +22,8 @@ export class GifService extends HttpService {
   getRandom$(options?: HTTPParams) {
     return this.getItems<GIF>(`${this.URL}random`, options);
   }
+
+  searchByTrendingKeyword$(options?:HTTPParams){
+    return this.getItems<GIF>(`${this.URL}search`, options);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatChipListChange } from '@angular/material/chips';
 
 @Component({
   selector: 'app-suggest-tags',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuggestTagsComponent implements OnInit {
 
+  @Input() keywords!: string[];
+
+  @Input() selectable: boolean = false;
+
+  @Input() removable: boolean = false;
+
+  @Output() eventChange = new EventEmitter<string>();
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
+  onChange(event: MatChipListChange) {
+    this.eventChange.emit(event.value)
+  }
 }

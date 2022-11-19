@@ -27,7 +27,7 @@ export class GifFacadeService {
     return this.__gifState.getTrendingKeyword$();
   }
 
-  loadGifList(options?: HTTPParams) {
+loadGifList(options?: HTTPParams) {
     this.__gifState.setUpdating(true);
     this.__gifService.getTrending$(options).pipe(
       take(1),
@@ -58,4 +58,20 @@ export class GifFacadeService {
     })
   }
 
+  loadGifByTrendingKeyword(options?:HTTPParams){
+    this.__gifState.setUpdating(true);
+    this.__gifService.searchByTrendingKeyword$(options).pipe(
+      take(1),
+      finalize(() => {
+        this.__gifState.setUpdating(false);
+      })
+    ).subscribe({
+      next: (res) => {
+        this.__gifState.setGifs(res.data)
+      },
+      error: (err) => {
+        throw err
+      }
+    })
+  }
 }

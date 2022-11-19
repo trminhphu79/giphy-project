@@ -33,17 +33,13 @@ export class GifStateService extends CoreStateService<GifState>{
 
   setGifs(value: GIF[]) {
     this.setState({
-      gifs: [
-        ...this.state.gifs,
-        ...value
-      ]
+      gifs: value
     })
   }
 
   setTrendingKeywords(value: string[]) {
     this.setState({
       trending_keyword: [
-        ...this.state.trending_keyword,
         ...value
       ]
     })

@@ -18,4 +18,4 @@ import { ContentLoaderModule } from '../content-loader';
   ],
   exports: [CardComponent, GridComponent]
 })
-export class GridModule { }
+export class GirdBaseModule { }

@@ -4,7 +4,9 @@
       <div class="gird-custom-item w-full bg-white mb-4 gif-card-container">
         <div class="gif-card-layer w-full">
           <div class="gif-card-item">
-            <img [src]="item?.images?.downsized?.url" alt="Image">
+            <img [src]="item?.images?.downsized?.url" alt="Image"
+              onload="console.log('loading...')"
+              onerror="console.log('error...')">
           </div>
         </div>
         <div class="gif-footer-card" fxLayout="row" fxLayoutAlign="space-between center">
