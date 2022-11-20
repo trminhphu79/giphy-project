@@ -10,14 +10,14 @@ import { SharedModule } from '@shared';
 import { GirdBaseModule } from '@utils/components/grid';
 import { SearchInputModule } from '@utils/components/search-input';
 import { SuggestTagsModule } from '@utils/components/suggest-tags';
-
-
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
     StickerComponent
   ],
   imports: [
+
     CommonModule,
     StickerRoutingModule,
     SharedModule,
@@ -27,6 +27,8 @@ import { SuggestTagsModule } from '@utils/components/suggest-tags';
     FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
+    SuggestTagsModule,
+    InfiniteScrollModule
   ]
 })
 export class StickerModule { }

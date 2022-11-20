@@ -9,7 +9,7 @@ import { GIF } from '@utils/models';
 export class CardComponent implements OnInit {
 
   @Input() item!: GIF;
-  @Output() change = new EventEmitter()
+  @Output() changes = new EventEmitter()
   constructor() { }
 
   ngOnInit(): void {

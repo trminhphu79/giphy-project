@@ -1,8 +1,11 @@
 <form [formGroup]="form">
   <app-search-input formControlName="searchControl"></app-search-input>
-  <app-suggest-tags [keywords]="trendingKeyword" (eventChange)="suggestTagChange($event)"></app-suggest-tags>
 </form>
 <div class="mt-4">
-  <app-grid [items]="dataSource" (favoriteChange)="favoriteChange($event)" [updating]="updating" [countLoadMore]="12"
-    (scrollingFinished)="onScrollingFinished()"></app-grid>
+  <app-suggest-tags [keywords]="trendingKeyword" (eventChange)="suggestTagChange($event)" [updating]="updating">
+  </app-suggest-tags>
+</div>
+<div class="mt-4">
+  <app-grid [items]="dataSource" (favoriteChange)="addFavorite($event)" [updating]="updating" [countLoadMore]="12"
+    (scrollingFinished)="onScrollingFinished()" (viewDetail)="viewDetail($event)"></app-grid>
 </div>

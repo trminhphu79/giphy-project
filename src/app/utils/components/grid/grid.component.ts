@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseComponent } from '../../base/base.component';
 
 @Component({
-  selector: 'app-grid',
+  selector: 'app-grid[items]',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent extends BaseComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class GridComponent extends BaseComponent implements OnInit {
 
   @Output() favoriteChange = new EventEmitter();
 
-  @Output() changes = new EventEmitter();
+  @Output() viewDetail = new EventEmitter();
 
   @Output() scrollingFinished = new EventEmitter();
   
@@ -26,7 +26,7 @@ export class GridComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onScrollingFinished() {
+  onScrolled(){
     this.scrollingFinished.emit();
   }
 }

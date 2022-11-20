@@ -7,7 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { GifComponent } from './gif.component';
 import { GirdBaseModule } from '@utils/components/grid';
 import { SuggestTagsModule } from '@utils/components/suggest-tags';
-import { MatChipsModule } from '@angular/material/chips';
+import { DialogDetailModule } from '@utils/components/dialog/dialog-detail';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -23,7 +24,8 @@ import { MatChipsModule } from '@angular/material/chips';
     GifRoutingModule,
     GirdBaseModule,
     SuggestTagsModule,
-    MatChipsModule
+    DialogDetailModule,
+    MatDialogModule
   ]
 })
 export class GifModule { }

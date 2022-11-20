@@ -43,6 +43,9 @@
       "@utils/components/confirm-dialog": [
         "src/app/utils/components/confirm-dialog/index.ts"
       ],
+      "@utils/components/dialog/dialog-detail": [
+        "src/app/utils/components/dialog/dialog-detail/index.ts"
+      ],
       "@utils/http": [
         "src/app/utils/http/index.ts"
       ],

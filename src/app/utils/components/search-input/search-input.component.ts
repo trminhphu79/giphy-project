@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       useExisting: SearchInputComponent,
       multi: true,
     }
-  ]
+  ],
 })
 export class SearchInputComponent implements ControlValueAccessor {
 
@@ -21,6 +21,8 @@ export class SearchInputComponent implements ControlValueAccessor {
   @Input() disabled: boolean = false;
   @Input() label: string = 'label';
   @Input() placeholder: string = 'Search...';
+  
+  @Output() clearSearch = new EventEmitter();
 
   onChange: any = () => { };
   onTouched: any = () => { };
@@ -58,8 +60,9 @@ export class SearchInputComponent implements ControlValueAccessor {
     this.value = _value;
   }
 
-  clear(){
+  clear() {
     this.value = '';
+    this.clearSearch.emit()
   };
 
   markOnTouched() {

@@ -1,33 +1,32 @@
-<div scrollLoadMore (scrollingFinished)="onScrollingFinished()">
-  <div class="gird-custom">
-    <ng-container *ngFor="let item of items;trackBy:trackByFn">
-      <div class="gird-custom-item w-full bg-white mb-4 gif-card-container">
-        <div class="gif-card-layer w-full">
-          <div class="gif-card-item">
-            <img [src]="item?.images?.downsized?.url" alt="Image"
-              onload="console.log('loading...')"
-              onerror="console.log('error...')">
-          </div>
-        </div>
-        <div class="gif-footer-card" fxLayout="row" fxLayoutAlign="space-between center">
-          <div class="content-left">
-            <img [src]="item?.user?.avatar_url" alt="Image">
-            <span *ngIf="item?.title">{{item?.title}}</span>
-          </div>
-          <div class="content-right">
-            <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
-              (click)="favoriteChange.emit(item)">
-              <mat-icon>favorite</mat-icon>
-            </button>
-          </div>
+<div class="gird-custom" infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="350" (scrolled)="onScrolled()">
+  <ng-container *ngFor="let item of items;trackBy:trackByFn">
+    <div class="gird-custom-item gif-card-container w-full bg-white mb-4" >
+      <div class="gif-card-layer w-full">
+        <div class="gif-card-item">
+          <img [src]="item?.images?.downsized?.url" alt="Image" (click)="viewDetail.emit(item)">
         </div>
       </div>
-    </ng-container>
-  </div>
-  <ng-container *ngIf="updating">
-    <ng-container [ngTemplateOutlet]="loadMoreTemplate"></ng-container>
+      <div class="gif-footer-card" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="content-left">
+          <img [src]="item?.user?.avatar_url" alt="Image">
+          <span *ngIf="item?.title" (click)="viewDetail.emit(item)">{{item?.title}}</span>
+        </div>
+        <div class="content-right">
+          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon"
+            (click)="favoriteChange.emit($event)">
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </ng-container>
 </div>
+
+<ng-container *ngIf="updating">
+  <ng-container [ngTemplateOutlet]="loadMoreTemplate"></ng-container>
+</ng-container>
+
 
 <ng-template #loadingTemmplate>
   <content-loader></content-loader>

@@ -5,8 +5,9 @@ $card_small: 24;
 $card_medium: 28;
 $card_large: 38;
 $primary: #3f51b5;
-$black-primary:#212539;
-
+$black-primary: #212539;
+$bg-white: #ffffff;
+$bg-gray: #fafafa;
 $font-bold: 600;
 $font-medium: 500;
 
@@ -14,3 +15,7 @@ $fs-14: 14px;
 $fs-16: 16px;
 $fs-18: 18px;
 $fs-20: 14px;
+
+.cursor-pointer {
+  cursor: pointer;
+}

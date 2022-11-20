@@ -1,0 +1,34 @@
+<h1 mat-dialog-title class="confirm-dialog-title">{{data.title}}</h1>
+<div mat-dialog-content class="confirm-dialog-content">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="50">
+      <img [src]="data.content.images?.downsized?.url" alt="Image">
+    </div>
+    <div fxFlex="50" class="px-4">
+      <div class="mb-2">
+        <span>Title: {{data.content.title}}</span>
+      </div>
+      <div class="mb-2">
+        <span>Rating: {{data.content.rating}}</span>
+      </div>
+      <div class="mb-2">
+        <span>Trending time: {{data.content.trending_datetime | date:"shortDate"}}</span>
+      </div>
+      <ng-container *ngIf="data.content.user">
+        <div class="mb-2">
+          <span>Author: {{data.content.user?.display_name}}</span>
+        </div>
+        <div class="mb-2" *ngIf="data.content.user?.profile_url">
+          Profile link:
+          <a class="cursor-pointer" (click)="toProfile(data.content.user?.profile_url)">
+            {{data.content.user?.profile_url}}</a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="confirm-dialog-actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">
+  <ng-container *ngFor="let action of data.actions; trackBy:trackByFn;">
+    <button mat-flat-button [color]="action.backgroundColor" (click)="action.action()">{{action.text}}</button>
+  </ng-container>
+</div>

@@ -51,4 +51,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
     this.router.navigate([`${page.path}`]);
   }
 
+  viewUpload(){
+    this.router.navigate(['/upload'])
+  }
 }

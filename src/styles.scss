@@ -3,41 +3,10 @@
 
 @import './styles/base/reset';
 @import './styles/base/variables';
+@import './styles/components/card';
+@import './styles//components/toolbar';
 
-$bg-white: #ffffff;
-$bg-gray: #fafafa;
 body {
   background-color: $bg-gray;
 }
 
-.gif-card-item {
-  background-color: $bg-white;
-}
-
-.gird-custom {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.gird-custom-item {
-  width: 23.5%;
-}
-
-@media screen and (max-width:1340px) {
-  .gird-custom-item {
-    width: 32.5%;
-  }
-}
-
-@media screen and (max-width:768px) {
-  .gird-custom-item {
-    width: 48%;
-  }
-}
-
-.mat-toolbar{
-  background:#ffffff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.024);
-}

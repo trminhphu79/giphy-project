@@ -14,6 +14,8 @@ export class SuggestTagsComponent implements OnInit {
 
   @Input() removable: boolean = false;
 
+  @Input() updating: boolean = false;
+  
   @Output() eventChange = new EventEmitter<string>();
 
   constructor() { }

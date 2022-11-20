@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports:[SearchInputComponent]
 })

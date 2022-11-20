@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs';
 import { HomeFacadeService } from './facade/home-facade.service';
 import { GIF } from '@utils/models';
 import { Router } from '@angular/router';
+import { LIMIT } from '@utils/http';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +17,11 @@ export class HomeComponent extends BaseComponent implements OnInit {
   gifUpdating!: boolean;
   stickerList!: GIF[];
   stickerUpdating!: boolean;
-  offset: number = 0;
-
   constructor(
     private __homeFacade: HomeFacadeService,
     private __router: Router
   ) {
     super();
-    this.params.limit = 4;
   }
 
   ngOnInit(): void {
@@ -55,16 +53,12 @@ export class HomeComponent extends BaseComponent implements OnInit {
       }
     });
 
-    this.__homeFacade.loadGifList({ limit: this.params.limit });
-    this.__homeFacade.loadStickeList({ limit: this.params.limit });
+    this.__homeFacade.loadGifList({ limit: 8 });
+    this.__homeFacade.loadStickeList({ limit: 8 });
   }
 
   favoriteChange(item: GIF) {
     console.log(item)
-  }
-
-  onScrollingFinished() {
-    this.__homeFacade.loadGifList({ offset: this.offset, limit: this.params.limit })
   }
 
   showAllSticker() {

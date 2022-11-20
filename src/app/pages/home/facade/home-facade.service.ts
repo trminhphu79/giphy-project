@@ -23,7 +23,7 @@ export class HomeFacadeService {
     return this.__homeState.isStickerUpdating$()
   }
 
-  loadGifList(options?: HTTPParams) {
+  loadGifList(options: HTTPParams) {
     this.__homeState.setGifUpdating(true);
     this.__gifService.getTrending$(options).pipe(
       take(1),
@@ -40,7 +40,7 @@ export class HomeFacadeService {
     })
   };
 
-  loadStickeList(options?: HTTPParams) {
+  loadStickeList(options: HTTPParams) {
     this.__homeState.setStickerUpdating(true);
     this.__stickerService.getTrending$(options).pipe(
       take(1),

@@ -20,7 +20,7 @@ export interface GIF {
   trending_datetime: string,
   title: string,
   alt_text: string,
-  images:any
+  images: any
 };
 
-export const INITIAL_GIF_STATE = {}
+export const INITIAL_GIF_STATE = {};

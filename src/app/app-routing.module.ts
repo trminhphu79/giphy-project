@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/gifs/gif.module').then((m) => m.GifModule)
   },
   {
+    path: "upload",
+    loadChildren: () => import('./pages/upload/upload.module').then((m) => m.UploadModule)
+  },
+  {
     path: "**",
     loadChildren: () => import('./pages/not-found/not-found.module').then((m) => m.NotFoundModule)
   }

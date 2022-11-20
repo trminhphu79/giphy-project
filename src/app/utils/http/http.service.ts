@@ -29,6 +29,10 @@ export class HttpService {
             if (options.q) {
                 params['q'] = options.q;
             };
+
+            if(options.type){
+                params['type'] = options.type;
+            }
             return this.__http.get<HTTPResponseItems<T>>(url, { params: params })
         } else {
             return this.__http.get<HTTPResponseItems<T>>(url);

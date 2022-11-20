@@ -1,4 +1,9 @@
-<app-search-input></app-search-input>
+<form [formGroup]="form">
+  <app-search-input formControlName="searchControl"></app-search-input>
+</form>
 <div class="mt-4">
-  <app-grid [items]="dataSource" [updating]="updating"></app-grid>
+  <app-suggest-tags [keywords]="trendingKeyword" (eventChange)="suggestTagChange($event)" [updating]="updating"></app-suggest-tags>
+</div>
+<div class="mt-4">
+  <app-grid [items]="dataSource" [updating]="updating" (scrollingFinished)="onScrollingFinished()"></app-grid>
 </div>

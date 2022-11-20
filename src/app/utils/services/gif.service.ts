@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { GLOBAL_SETTINGS } from "@global-settings";
-import { HTTPParams, HttpService } from "@utils/http";
+import { HTTPParams, HttpService, TypeData } from "@utils/http";
 import { GIF } from "../models/gif.schema";
 
 @Injectable({ providedIn: "root" })
@@ -11,15 +11,18 @@ export class GifService extends HttpService {
     super(http);
   };
 
-  getGifList$(options?: HTTPParams) {
+  getGifList$(options: HTTPParams) {
+    options['type'] = TypeData.GIF;
     return this.getItems<GIF>(`${this.URL}`, options)
   }
 
-  getTrending$(options?: HTTPParams) {
+  getTrending$(options: HTTPParams) {
+    options['type'] = TypeData.GIF;
     return this.getItems<GIF>(`${this.URL}trending`, options);
   }
 
-  getRandom$(options?: HTTPParams) {
+  getRandom$(options: HTTPParams) {
+    options['type'] = TypeData.GIF;
     return this.getItems<GIF>(`${this.URL}random`, options);
   }
 

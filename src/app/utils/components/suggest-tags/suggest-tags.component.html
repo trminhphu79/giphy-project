@@ -1,10 +1,11 @@
-<!-- <mat-chip-listbox aria-label="Fish selection">
-    <mat-chip-option>One fish</mat-chip-option>
-    <mat-chip-option>Two fish</mat-chip-option>
-    <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
-    <mat-chip-option color="warn">Warn fish</mat-chip-option>
-</mat-chip-listbox> -->
-<mat-chip-list (change)="onChange($event)">
-    <mat-chip #chipRef="matChip" (click)="chipRef.selectViaInteraction()" *ngFor="let keyword of keywords">{{keyword}}
-    </mat-chip>
-</mat-chip-list>
+<ng-container *ngIf="!updating;else loadingTemplate">
+    <mat-chip-list (change)="onChange($event)">
+        <mat-chip [disabled]="updating" #chipRef="matChip" (click)="!updating ? chipRef.selectViaInteraction() : null"
+            *ngFor="let keyword of keywords">{{keyword}}
+        </mat-chip>
+    </mat-chip-list>
+</ng-container>
+
+<ng-template #loadingTemplate>
+    <div>Loading....</div>
+</ng-template>
