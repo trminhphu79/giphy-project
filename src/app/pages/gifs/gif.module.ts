@@ -9,6 +9,7 @@ import { GirdBaseModule } from '@utils/components/grid';
 import { SuggestTagsModule } from '@utils/components/suggest-tags';
 import { DialogDetailModule } from '@utils/components/dialog/dialog-detail';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -25,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     GirdBaseModule,
     SuggestTagsModule,
     DialogDetailModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ]
 })
 export class GifModule { }

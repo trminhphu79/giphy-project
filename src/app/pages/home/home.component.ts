@@ -79,7 +79,7 @@ export class HomeComponent extends BaseComponent implements OnInit {
   viewDetail(item: any) {
     const confirmDialogRef = this.__dialog.open(DialogDetailComponent, {
       minWidth: '650px',
-      maxWidth: '80%',
+      maxWidth: '650px',
       disableClose: true,
       data: {
         title: `Information Detail`,

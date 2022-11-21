@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <app-search-input formControlName="searchControl"></app-search-input>
 </form>
-<div class="mt-4">
+<div class="mt-4"  fxLayout="row" fxLayoutAlign="center center">
   <app-suggest-tags [keywords]="trendingKeyword" (eventChange)="suggestTagChange($event)" [updating]="updating">
   </app-suggest-tags>
 </div>
