@@ -24,13 +24,14 @@
         </div>
       </ng-template>
 
-      <input type="file" name="" id="image" (change)="uploadFile($event)" hidden multiple accept="*">
+      <input type="file" name="" id="image" (change)="uploadFile($event)" hidden multiple
+        accept="image/gif, image/jpeg, image/webp, image/png">
 
     </div>
   </div>
   <div class="mat-form-group">
     <span>Title</span>
-    <input formControlName="title"/>
+    <input formControlName="title" />
   </div>
 
   <div class="mat-form-group d-flex w-100">
@@ -45,7 +46,7 @@
       <div>
         <span>Username</span>
       </div>
-      <input formControlName="username"/>
+      <input formControlName="username" />
     </div>
   </div>
   <div mat-dialog-actions class="mt-4" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">

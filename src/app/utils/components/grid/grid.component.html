@@ -4,7 +4,7 @@
     <div class="gird-custom-item gif-card-container w-full bg-white mb-4">
       <div class="gif-card-layer w-full">
         <div class="gif-card-item">
-          <img [src]="item?.images?.downsized?.url" alt="Image" (click)="viewDetail.emit(item)">
+          <app-image-loader [imageSource]="item?.images?.downsized?.url" (click)="viewDetail.emit(item)"></app-image-loader>
         </div>
       </div>
       <div class="gif-footer-card" fxLayout="row" fxLayoutAlign="space-between center">

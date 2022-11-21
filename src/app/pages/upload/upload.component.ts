@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFacade } from './facade/upload-facade.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { forkJoin, finalize, takeUntil } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { Observable } from 'rxjs';
 import { BaseComponent } from './../../utils/base/base.component';
 import { MatSnackBar } from '@angular/material/snack-bar';

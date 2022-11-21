@@ -6,8 +6,7 @@ $card_medium: 28;
 $card_large: 38;
 $primary: #3f51b5;
 $black-primary: #212539;
-$bg-white: #ffffff;
-$bg-gray: #fafafa;
+
 $font-bold: 600;
 $font-medium: 500;
 
@@ -47,10 +46,10 @@ $white: #ffffff;
 $black-text: #282828;
 $danger: #FE4C4C;
 $blue: #2667FF;
-$bg-gray1: #E5E5E5;
-$bg-gray2:#F9F9F9;
+$bg-gray1: #fafafa;
+$bg-gray2: #F9F9F9;
 $bg-gray: rgba(255, 255, 255, 0.03);
 
-.mt-24{
-    margin-top: 24px;
+.mt-24 {
+  margin-top: 24px;
 }

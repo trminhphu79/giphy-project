@@ -1,6 +1,7 @@
-<div #divIntersectContainer>
-    <div class="loading" *ngIf="loading">
-        Loading....
+<div class="loading" #divIntersectContainer [class.is-loading]="loading">
+    <div class="lds-ripple" *ngIf="loading">
+        <div></div>
+        <div></div>
     </div>
 </div>
 <img #imageEl class="hidden" [attr.data-imageSrc]="imageSource" />

@@ -6,7 +6,11 @@
 @import './styles/components/card';
 @import './styles//components/toolbar';
 
-body {
-  background-color: $bg-gray;
+// body {
+//   background-color: $bg-gray;
+// }
+
+.app-content{
+  background-color: $bg-gray1;
 }
 

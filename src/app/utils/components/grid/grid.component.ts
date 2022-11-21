@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-grid[items]',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class GridComponent extends BaseComponent implements OnInit {
 

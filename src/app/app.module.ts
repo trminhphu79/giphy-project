@@ -9,6 +9,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { GLOBAL_SETTINGS } from '@global-settings';
+import { ScrollToTopModule } from './utils/components/scroll-to-top/scroll-to-top.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { GLOBAL_SETTINGS } from '@global-settings';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    ScrollToTopModule,
     provideFirebaseApp(() => initializeApp(GLOBAL_SETTINGS.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
