@@ -5,5 +5,5 @@
   <app-suggest-tags [keywords]="trendingKeyword" (eventChange)="suggestTagChange($event)" [updating]="updating"></app-suggest-tags>
 </div>
 <div class="mt-4">
-  <app-grid [items]="dataSource" [updating]="updating" (scrollingFinished)="onScrollingFinished()"></app-grid>
+  <app-grid [items]="dataSource" [updating]="updating" (scrollingFinished)="onScrollingFinished()" (viewDetail)="viewDetail($event)"></app-grid>
 </div>

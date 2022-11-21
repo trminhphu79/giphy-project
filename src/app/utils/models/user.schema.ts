@@ -6,7 +6,7 @@ export interface User {
   profile_url: string,
   username: string,
   display_name: string,
-  avatar_url:string
+  avatar_url: string
 };
 
 export interface UserState {
@@ -22,8 +22,10 @@ export const INITIAL_USER_STATE: UserState = {
     banner_url: "",
     profile_url: "",
     username: "",
-    avatar_url:''
+    avatar_url: ''
   },
   favorites: [],
   updating: false
 }
+
+export const LOCAL_STORAGE_KEY = "GIF"

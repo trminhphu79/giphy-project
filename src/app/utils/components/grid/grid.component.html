@@ -1,7 +1,7 @@
 <div class="gird-custom" infiniteScroll [infiniteScrollDistance]="1.5" [infiniteScrollUpDistance]="1.5"
   [infiniteScrollThrottle]="350" (scrolled)="onScrolled()">
   <ng-container *ngFor="let item of items;trackBy:trackByFn">
-    <div class="gird-custom-item gif-card-container w-full bg-white mb-4" >
+    <div class="gird-custom-item gif-card-container w-full bg-white mb-4">
       <div class="gif-card-layer w-full">
         <div class="gif-card-item">
           <img [src]="item?.images?.downsized?.url" alt="Image" (click)="viewDetail.emit(item)">
@@ -9,7 +9,7 @@
       </div>
       <div class="gif-footer-card" fxLayout="row" fxLayoutAlign="space-between center">
         <div class="content-left">
-          <img [src]="item?.user?.avatar_url" alt="Image">
+          <img [src]="item?.user?.avatar_url ?? '../../../../assets/img/default.png'" alt="Image">
           <span *ngIf="item?.title" (click)="viewDetail.emit(item)">{{item?.title}}</span>
         </div>
         <div class="content-right">
@@ -26,7 +26,6 @@
 <ng-container *ngIf="updating">
   <ng-container [ngTemplateOutlet]="loadMoreTemplate"></ng-container>
 </ng-container>
-
 
 <ng-template #loadingTemmplate>
   <content-loader></content-loader>

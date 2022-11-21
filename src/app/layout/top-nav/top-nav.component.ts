@@ -25,7 +25,7 @@ export class TopNavComponent extends BaseComponent implements OnInit {
   },
   {
     name: "My Gifs",
-    path: ""
+    path: "my-gif"
   },]
   constructor(private _fb: FormBuilder, private router: Router) {
     super();
@@ -33,13 +33,6 @@ export class TopNavComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-
-  ngAfterViewInit() {
-    this.form.get('searchControl')?.valueChanges.pipe(takeUntil(this.destroy$), distinctUntilChanged(),
-      debounceTime(300)).subscribe((value) => {
-        console.log(value)
-      })
-  }
 
   #initForm() {
     this.form = this._fb.group({
@@ -54,4 +47,6 @@ export class TopNavComponent extends BaseComponent implements OnInit {
   viewUpload(){
     this.router.navigate(['/upload'])
   }
+
+ 
 }

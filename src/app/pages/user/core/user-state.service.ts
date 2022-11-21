@@ -29,11 +29,11 @@ export class UserStateService extends CoreStateService<UserState> {
     return this.#favorites$;
   };
 
-  setFavorites(newFavorite: GIF[]) {
+  setFavorites(newFavorite: any[]) {
     this.setState({ favorites: [...this.state.favorites, ...newFavorite] });
   };
 
-  removeFavorite(selectedItem: GIF) {
+  removeFavorite(selectedItem: any) {
     let newFavorites = this.state.favorites.filter((favorite) => favorite.id !== selectedItem.id);
     this.setState({ favorites: newFavorites });
   }

@@ -21,6 +21,8 @@ export class SectionGridComponent implements OnInit {
 
   @Output() showAll = new EventEmitter();
 
+  @Output() viewDetail = new EventEmitter();
+  
   constructor() { }
 
   ngOnInit(): void { }

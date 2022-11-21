@@ -13,6 +13,6 @@
     </div>
   </div>
   <div class="content-grid mt-2">
-    <app-grid [items]="dataSource" [updating]="updating"></app-grid>
+    <app-grid [items]="dataSource" [updating]="updating" (viewDetail)="viewDetail.emit($event)"></app-grid>
   </div>
 </div>

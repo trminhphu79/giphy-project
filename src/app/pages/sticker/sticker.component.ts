@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@utils/base';
 import { StickerFacadeService } from './facade/sticker-facade.service';
 import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs';
-import { GIF } from '@utils/models';
+import { GIF, LOCAL_STORAGE_KEY } from '@utils/models';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { HTTPParams, Pagination, TypeData } from '@utils/http';
 import { LIMIT } from '@utils/http';
+import { DialogDetailComponent } from '@utils/components/dialog/dialog-detail';
+import { MatDialog } from '@angular/material/dialog';
+import { UserStorageService } from '@utils/services';
 
 @Component({
   selector: 'app-sticker',
@@ -20,7 +23,12 @@ export class StickerComponent extends BaseComponent implements OnInit {
   trendingKeyword!: string[];
   pagination!: Pagination;
   reloadTags: boolean = false;
-  constructor(private __stickerFacade: StickerFacadeService, private _fb: FormBuilder) {
+  constructor(
+    private __stickerFacade: StickerFacadeService,
+    private _fb: FormBuilder,
+    private __dialog: MatDialog,
+    private __userService: UserStorageService
+  ) {
     super();
   }
 
@@ -52,8 +60,6 @@ export class StickerComponent extends BaseComponent implements OnInit {
       next: (value) => {
         this.trendingKeyword = value;
         this.reloadTags = false;
-        console.log(this.trendingKeyword)
-
       },
       error: (err) => {
         throw err
@@ -63,7 +69,6 @@ export class StickerComponent extends BaseComponent implements OnInit {
     this.__stickerFacade.getPagination().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
         this.pagination = value;
-        console.log('...value', value)
       },
       error: (err) => {
         throw err
@@ -102,7 +107,6 @@ export class StickerComponent extends BaseComponent implements OnInit {
       })
     ).subscribe({
       next: (value) => {
-        console.log('success....')
       },
       error: (err) => {
         throw err
@@ -119,11 +123,33 @@ export class StickerComponent extends BaseComponent implements OnInit {
   }
 
   onScrollingFinished() {
-    console.log('onScrollingFinished...', event);
     this.__stickerFacade.search({ offset: this.pagination.count + this.pagination.offset, limit: LIMIT, q: this.searchControl.value }, false, this.reloadTags).subscribe({})
   }
 
-  override clearState(){
+  viewDetail(item: GIF) {
+    const confirmDialogRef = this.__dialog.open(DialogDetailComponent, {
+      minWidth: '650px',
+      maxWidth: '80%',
+      disableClose: true,
+      data: {
+        title: `Information Detail`,
+        content: item,
+        actions: [
+          {
+            text: 'Cancel',
+            backgroundColor: 'default',
+            action: () => {
+              confirmDialogRef.close()
+            }
+          },
+    
+        ]
+      }
+    });
+    confirmDialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe(() => { });
+  };
+
+  override clearState() {
     this.__stickerFacade.clearState();
   };
 }

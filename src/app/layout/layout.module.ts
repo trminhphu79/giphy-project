@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FooterComponent
   ],
   imports: [
-  CommonModule,
+    CommonModule,
     SearchInputModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatMenuModule
   ],
   exports: [
     TopNavComponent,

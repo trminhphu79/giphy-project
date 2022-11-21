@@ -1,46 +1,111 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFacade } from './facade/upload-facade.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { forkJoin, finalize, takeUntil } from 'rxjs';
+import { Observable } from 'rxjs';
+import { BaseComponent } from './../../utils/base/base.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss']
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent extends BaseComponent implements OnInit {
 
-  public file!: File;
-  public binary: string = ''
-  constructor(public __uploadFacade: UploadFacade) { }
+  public form!: FormGroup;
+  public arrayFilesLink: string[] = []
+  constructor(
+    public __uploadFacade: UploadFacade,
+    private __fb: FormBuilder,
+    private __matSnackbar: MatSnackBar
+
+  ) {
+    super()
+  }
 
   ngOnInit(): void {
+    this.#initForm();
+    this.registerCoreLayer();
   }
 
-  onFilechange(event: any) {
-    console.log(event.target.files[0])
-    this.file = event.target.files[0]
+
+  override registerCoreLayer(): void {
   }
 
-  upload() {
-    if (this.file) {
-      console.log(this.file)
-      let r = new FileReader();
 
-      r.onload = function () {
+  #initForm() {
+    this.form = this.__fb.group({
+      title: [null, Validators.required],
+      tags: [null, Validators.required],
+      username: [null, Validators.required],
+    })
+  };
 
-      }
-      r.readAsBinaryString(this.file);
-      setTimeout(() => {
-        console.log(r.result)
-        this.__uploadFacade.uploadFiles({
-          username: "trminhphu79",
-          file: r.result,
-          tags: "anime,animevietnam"
-        })
-      }, 1000)
-      console.log('end')
+  async uploadFile(event: any) {
 
+    let { files } = event.target
+    if (files && files.length > 1) {
+      this.uploadMultiple(files)
     } else {
-      alert("Please select a file first")
+      this.uploadSingle(files[0])
+    }
+  }
+
+  uploadSingle(file: File) {
+    let random = Math.floor(Math.random() * 10000);
+    this.__uploadFacade.uploadFile(file, `file-${random}`).subscribe({
+      next: (res) => {
+        this.arrayFilesLink.push(res)
+      },
+      error: (err) => {
+        throw err
+      }
+    })
+  }
+
+  uploadMultiple(files: FileList) {
+
+    let request$: Array<Observable<any>> = [];
+    let random = null;
+
+    Object.keys(files).forEach((key) => {
+      random = Math.floor(Math.random() * 10000);
+      request$.push(this.__uploadFacade.uploadFile(files[+key], `file-${random}`))
+    });
+
+    forkJoin(request$).subscribe({
+      next: (res) => {
+        this.arrayFilesLink.push(...res)
+      },
+      error: (err) => {
+        throw err
+      }
+    });
+  }
+
+  submit() {
+    if (this.arrayFilesLink && this.arrayFilesLink.length && this.form.valid) {
+      this.__uploadFacade.createGif$({ ...this.form.value, files: this.arrayFilesLink }).subscribe({
+        next: (value) => {
+          this.__matSnackbar.open(`Upload thành công!`, 'CREATE', {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'center'
+          });
+          this.form.reset();
+          this.arrayFilesLink = [];
+        },
+        error: (err) => {
+          throw err
+        }
+      })
+    }else{
+      this.__matSnackbar.open(`Vui lòng kiểm tra lại thông tin`, 'CREATE', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center'
+      });
     }
   }
 }

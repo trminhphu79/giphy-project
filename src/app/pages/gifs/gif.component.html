@@ -6,6 +6,6 @@
   </app-suggest-tags>
 </div>
 <div class="mt-4">
-  <app-grid [items]="dataSource" (favoriteChange)="addFavorite($event)" [updating]="updating" [countLoadMore]="12"
+  <app-grid [items]="dataSource" [updating]="updating" [countLoadMore]="12"
     (scrollingFinished)="onScrollingFinished()" (viewDetail)="viewDetail($event)"></app-grid>
 </div>

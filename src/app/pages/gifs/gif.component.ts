@@ -60,7 +60,6 @@ export class GifComponent extends BaseComponent implements OnInit {
       next: (value) => {
         this.trendingKeyword = value;
         this.reloadTags = false;
-        console.log(this.trendingKeyword)
       },
       error: (err) => {
         throw err
@@ -101,7 +100,6 @@ export class GifComponent extends BaseComponent implements OnInit {
       }),
       debounceTime(300),
       switchMap((term: string) => {
-        console.log('...term', term)
         this.dataSource = [];
         this.trendingKeyword = [];
         let params: HTTPParams = {
@@ -113,7 +111,6 @@ export class GifComponent extends BaseComponent implements OnInit {
       })
     ).subscribe({
       next: (value) => {
-        console.log('success....')
       },
       error: (err) => {
         throw err
@@ -123,7 +120,6 @@ export class GifComponent extends BaseComponent implements OnInit {
 
 
   addFavorite(item: GIF) {
-    console.log(item)
   }
 
   onScrollingFinished() {
@@ -150,13 +146,7 @@ export class GifComponent extends BaseComponent implements OnInit {
               confirmDialogRef.close()
             }
           },
-          {
-            text: 'Add to favorite',
-            backgroundColor: 'warn',
-            action: () => {
-              
-            }
-          }
+       
         ]
       }
     });

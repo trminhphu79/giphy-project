@@ -10,6 +10,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SectionGridComponent } from './components/section-grid/section-grid.component';
+import { DialogDetailModule } from '@utils/components/dialog/dialog-detail';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { SectionGridComponent } from './components/section-grid/section-grid.com
     SectionGridComponent
   ],
   imports: [
-  CommonModule,
+CommonModule,
     HomeRoutingModule,
     SharedModule,
     GirdBaseModule,
@@ -25,7 +28,9 @@ import { SectionGridComponent } from './components/section-grid/section-grid.com
     ReactiveFormsModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    DialogDetailModule,
+    MatDialogModule
   ]
 })
 export class HomeModule { }

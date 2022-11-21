@@ -5,6 +5,8 @@ import { HomeFacadeService } from './facade/home-facade.service';
 import { GIF } from '@utils/models';
 import { Router } from '@angular/router';
 import { LIMIT } from '@utils/http';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDetailComponent } from '@utils/components/dialog/dialog-detail';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,8 @@ export class HomeComponent extends BaseComponent implements OnInit {
   stickerUpdating!: boolean;
   constructor(
     private __homeFacade: HomeFacadeService,
-    private __router: Router
+    private __router: Router,
+    private __dialog: MatDialog
   ) {
     super();
   }
@@ -58,7 +61,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   favoriteChange(item: GIF) {
-    console.log(item)
   }
 
   showAllSticker() {
@@ -73,4 +75,26 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.destroy$.complete();
     this.__homeFacade.clearStates();
   }
+
+  viewDetail(item: any) {
+    const confirmDialogRef = this.__dialog.open(DialogDetailComponent, {
+      minWidth: '650px',
+      maxWidth: '80%',
+      disableClose: true,
+      data: {
+        title: `Information Detail`,
+        content: item,
+        actions: [
+          {
+            text: 'Cancel',
+            backgroundColor: 'default',
+            action: () => {
+              confirmDialogRef.close()
+            }
+          },
+        ]
+      }
+    });
+    confirmDialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe(() => { });
+  };
 }

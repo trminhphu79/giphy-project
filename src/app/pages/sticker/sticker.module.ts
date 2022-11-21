@@ -11,6 +11,8 @@ import { GirdBaseModule } from '@utils/components/grid';
 import { SearchInputModule } from '@utils/components/search-input';
 import { SuggestTagsModule } from '@utils/components/suggest-tags';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogDetailModule } from './../../utils/components/dialog/dialog-detail/dialog-detail.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     MatButtonModule,
     MatIconModule,
     SuggestTagsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatDialogModule,
+    DialogDetailModule
   ]
 })
 export class StickerModule { }

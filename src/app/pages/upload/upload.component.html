@@ -1,4 +1,56 @@
-<label for="formFile" class="form-label">Upload file example</label>
-<input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile">
+<form [formGroup]="form">
+  <div class="mat-form-group">
+    <span>Hình ảnh</span>
+    <div style="display: flex">
+      <ng-container>
+        <ng-container *ngFor="let url of arrayFilesLink">
+          <div class="list-image-template">
+            <label for="image">
+              <img alt="Image" [src]="url" style="width: 120px;height:120px">
+            </label>
+          </div>
+        </ng-container>
+        <div class="list-image-template2">
+          <label for="image">
+            <img src='../../../../assets/icons/ic_add.svg' alt="" style="width: 120px;height:120px">
+          </label>
+        </div>
+      </ng-container>
+      <ng-template #template>
+        <div class="image">
+          <label for="image">
+            <img src="../../../../assets/icons/image-empty.svg" alt="">
+          </label>
+        </div>
+      </ng-template>
 
-<button (click)="upload()">Upload</button>
+      <input type="file" name="" id="image" (change)="uploadFile($event)" hidden multiple accept="*">
+
+    </div>
+  </div>
+  <div class="mat-form-group">
+    <span>Title</span>
+    <input formControlName="title"/>
+  </div>
+
+  <div class="mat-form-group d-flex w-100">
+    <div class="mat-form-control col-6">
+      <div>
+        <span>Tags </span>
+        <span class="mr-2 suggestion">(cat, dog, animal...)</span>
+      </div>
+      <input formControlName="tags" />
+    </div>
+    <div class="mat-form-control col-6">
+      <div>
+        <span>Username</span>
+      </div>
+      <input formControlName="username"/>
+    </div>
+  </div>
+  <div mat-dialog-actions class="mt-4" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem">
+    <button mat-flat-button color="primary" (click)="submit()">
+      Submit
+    </button>
+  </div>
+</form>

@@ -12,7 +12,7 @@ export class HttpService {
     protected getItems<T>(url: string, options?: HTTPParams) {
         let params: HTTPParams = {}
         params['api_key'] = GLOBAL_SETTINGS.apiKey;
-        console.log('params...',params)
+        console.log('params...', params)
         if (options) {
             if (options.limit) {
                 params['limit'] = options.limit;
@@ -30,7 +30,7 @@ export class HttpService {
                 params['q'] = options.q;
             };
 
-            if(options.type){
+            if (options.type) {
                 params['type'] = options.type;
             }
             return this.__http.get<HTTPResponseItems<T>>(url, { params: params })
@@ -48,7 +48,11 @@ export class HttpService {
     }
 
     protected submitItem<T>(url: string, body: T) {
-        return this.__http.post(url, body);
+        return this.__http.post(url, body, {
+            params: {
+                'api_key': GLOBAL_SETTINGS.apiKey
+            }
+        });
     }
 
     protected updateItem<T>(url: string, body: T) {

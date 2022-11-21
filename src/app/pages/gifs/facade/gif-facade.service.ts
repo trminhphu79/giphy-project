@@ -65,7 +65,6 @@ export class GifFacadeService {
   }
 
   loadGifByTrendingKeyword(options: HTTPParams) {
-    console.log('loadGifByTrendingKeyword...', options)
     this.__gifState.setUpdating(true);
     this.__gifService.searchByTrendingKeyword$(options).pipe(
       take(1),
@@ -108,7 +107,6 @@ export class GifFacadeService {
       take(1),
     ).subscribe({
       next: (value) => {
-        console.log(value);
         this.__gifState.setTrendingKeywords(value.data.map((ite: any) => ite.name))
       },
       error: (err) => {

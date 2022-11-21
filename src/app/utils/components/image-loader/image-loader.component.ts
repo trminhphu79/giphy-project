@@ -19,7 +19,6 @@ export class ImageLoaderComponent implements OnInit {
   }
 
   observerCallback(entries: any, observer: any) {
-    console.log(entries,observer)
     for (let i = 0; i < entries.length; i++) {
       let entry = entries[i];
       this.loading = true;

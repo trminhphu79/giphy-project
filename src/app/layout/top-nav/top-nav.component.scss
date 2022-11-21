@@ -1,13 +1,31 @@
 @import '../../../styles/base/variables';
-.navigation-items{
+
+.navigation-items {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  li{
+
+  li {
     font-size: $fs-14;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       color: $primary;
     }
+  }
+}
+
+.user-infor {
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 4px
+  }
+
+  span {
+    font-size: $fs-14;
   }
 }

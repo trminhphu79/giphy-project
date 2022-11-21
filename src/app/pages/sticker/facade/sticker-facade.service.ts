@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HTTPParams } from "@utils/http";
-import { StickerService, TrendingKeywordService } from "@utils/services";
+import { StickerService, TrendingKeywordService, UserStorageService } from "@utils/services";
 import { StickerStateService } from "../core/sticker-state.service";
 import { Observable, take } from 'rxjs';
 import { finalize } from 'rxjs';
@@ -13,7 +13,8 @@ export class StickerFacadeService {
     private __stickerState: StickerStateService,
     private __stickerService: StickerService,
     private __trendingKeywordService: TrendingKeywordService,
-    private __tagsService: TagsService
+    private __tagsService: TagsService,
+    private __userStorage: UserStorageService
   ) { }
 
   getSticker() {
@@ -30,6 +31,10 @@ export class StickerFacadeService {
 
   getPagination() {
     return this.__stickerState.getPanigation$();
+  }
+
+  setFavorite(item: any, key: string) {
+    this.__userStorage.saveData(key, item)
   }
 
   loadSticker(options: HTTPParams) {
@@ -108,7 +113,6 @@ export class StickerFacadeService {
       take(1),
     ).subscribe({
       next: (value) => {
-        console.log(value);
         this.__stickerState.setTrendingKeywords(value.data.map((ite: any) => ite.name))
       },
       error: (err) => {

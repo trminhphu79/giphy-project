@@ -1,0 +1,107 @@
+@import '../../../styles//base/variables';
+
+form {
+  width: 100%;
+  height: calc(100vh - (64px + 1.5rem));
+
+  .mat-form-group {
+    margin-top: 24px;
+
+    span {
+      color: $gray1-text;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      /* identical to box height, or 125% */
+      letter-spacing: 0.015em;
+    }
+
+    .mat-form-control {
+      &:nth-child(1) {
+        padding-right: 8px;
+      }
+
+      &:nth-child(2) {
+        padding-left: 8px;
+      }
+
+      .suggestion {
+        color: $gray-text;
+      }
+    }
+
+    .ng-invalid.ng-touched{
+      border: 1px solid rgb(255, 48, 48);
+    }
+
+    input,
+    textarea {
+      border-radius: 8px;
+      background-color: #fff;
+      padding: 8px 16px;
+      width: 100%;
+      border: 1px solid rgba(74, 74, 74, 0.218);
+      transition: all .2s ease;
+
+      &:focus {
+        border: 1px solid $bg-gray1;
+      }
+    }
+
+    textarea {
+      height: 108px;
+    }
+
+    .list-image-template {
+      height: 80px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-right: 16px;
+
+      img {
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+      }
+    }
+
+    .list-image-template2 {
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 16px;
+      transition: all .2s ease;
+
+      img {
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        color: #ccc;
+      }
+    }
+
+    .image {
+      width: 100%;
+      height: 80px;
+      background-color: $bg-gray2;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .2s ease;
+      border: 1px solid #fff;
+
+      img {
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        border-radius: 8px
+      }
+
+    }
+  }
+}
