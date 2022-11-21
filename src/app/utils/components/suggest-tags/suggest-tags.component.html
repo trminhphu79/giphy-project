@@ -1,6 +1,6 @@
 <ng-container *ngIf="!updating;else loadingTemplate">
     <mat-chip-list (change)="onChange($event)">
-        <mat-chip [disabled]="updating" #chipRef="matChip" (click)="!updating ? chipRef.selectViaInteraction() : null"
+        <mat-chip color="default" [disabled]="updating" #chipRef="matChip" (click)="!updating ? chipRef.selectViaInteraction() : null"
             *ngFor="let keyword of keywords">{{keyword}}
         </mat-chip>
     </mat-chip-list>
