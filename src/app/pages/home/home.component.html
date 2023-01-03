@@ -1,2 +1,4 @@
-<app-section-grid [dataSource]="gifList" [updating]="gifUpdating" [leftIcon]="'trending_up'" [rightIcon]="'open_in_new'" [title]="'Gifs trending'" (showAll)="showAllGif()" (viewDetail)="viewDetail($event)"></app-section-grid>
-<app-section-grid [dataSource]="stickerList" [updating]="stickerUpdating" [leftIcon]="'auto_awsome'" [rightIcon]="'open_in_new'" [title]="'Stickers trending'" (showAll)="showAllSticker()" (viewDetail)="viewDetail($event)"></app-section-grid>
+<ng-container *ngFor="let selection of sections">
+  <app-section-grid [title]="selection.title" [dataSource]="selection.dataSource" [updating]="selection.updating" [leftIcon]="selection.leftIcon" [rightIcon]="selection.rightIcon" (showAll)="selection.showAll()" (viewDetail)="selection.viewDetail($event)">
+  </app-section-grid>
+</ng-container>

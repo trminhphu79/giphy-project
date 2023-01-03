@@ -18,7 +18,6 @@ export class SectionGridComponent implements OnInit {
 
   @Input() leftIcon: string = ''
 
-
   @Output() showAll = new EventEmitter();
 
   @Output() viewDetail = new EventEmitter();

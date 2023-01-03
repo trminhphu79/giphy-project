@@ -19,6 +19,38 @@ export class HomeComponent extends BaseComponent implements OnInit {
   gifUpdating!: boolean;
   stickerList!: GIF[];
   stickerUpdating!: boolean;
+
+  sections: Section[] = [
+    {
+      type: "gif",
+      dataSource: [],
+      updating: false,
+      leftIcon: 'trending_up',
+      rightIcon: 'open_in_new',
+      title: 'Gifs trending',
+      showAll: () => {
+        this.showAllGif()
+      },
+      viewDetail: (value) => {
+        this.viewDetail(value)
+      }
+    },
+    {
+      type: 'sticker',
+      dataSource: [],
+      updating: false,
+      leftIcon: 'auto_awsome',
+      rightIcon: 'open_in_new',
+      title: 'Stickers trending',
+      showAll: () => {
+        this.showAllSticker();
+      },
+      viewDetail: (value) => {
+        this.viewDetail(value);
+      }
+    },
+  ]
+
   constructor(
     private __homeFacade: HomeFacadeService,
     private __router: Router,
@@ -35,24 +67,32 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.__homeFacade.getGifList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
         this.gifList = value;
+        let idx = this.sections.findIndex((item) => item.type == 'gif');
+        this.sections[idx].dataSource = value;
       }
     });
 
     this.__homeFacade.getStickerList().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
         this.stickerList = value;
+        let idx = this.sections.findIndex((item) => item.type == 'sticker');
+        this.sections[idx].dataSource = value;
       }
     });
 
     this.__homeFacade.isGifUpdating$().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
         this.gifUpdating = value;
+        let idx = this.sections.findIndex((item) => item.type == 'gif');
+        this.sections[idx].updating = value;
       }
     });
 
     this.__homeFacade.isStickerUpdating$().pipe(takeUntil(this.destroy$)).subscribe({
       next: (value) => {
         this.stickerUpdating = value;
+        let idx = this.sections.findIndex((item) => item.type == 'sticker');
+        this.sections[idx].updating = value;
       }
     });
 
@@ -97,4 +137,15 @@ export class HomeComponent extends BaseComponent implements OnInit {
     });
     confirmDialogRef.afterClosed().pipe(takeUntil(this.destroy$)).subscribe(() => { });
   };
+}
+
+export interface Section {
+  type: string,
+  dataSource: GIF[],
+  updating: boolean,
+  leftIcon: string,
+  rightIcon: string,
+  title: string,
+  showAll: () => void,
+  viewDetail: (value: any) => void
 }
